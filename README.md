@@ -1,40 +1,58 @@
-# Welcome to Remix!
+# Remix Template Setup
 
-- 📖 [Remix docs](https://remix.run/docs)
+This template includes:
 
-## Development
+- Remix
+- PostgreSQL
+- Prisma
+- Docker Compose
 
-Run the dev server:
+It is ready for production use.
 
-```shellscript
-npm run dev
-```
+## Setup Instructions
 
-## Deployment
+Follow these steps to set up your Remix template project:
 
-First, build your app for production:
+1. **Copy the example environment file:**
 
-```sh
-npm run build
-```
+   ```sh
+   cp .env.example .env
+   ```
 
-Then run the app in production mode:
+2. **Install the necessary npm packages:**
 
-```sh
-npm start
-```
+   ```sh
+   npm install
+   ```
 
-Now you'll need to pick a host to deploy it to.
+3. **Start the PostgreSQL database using Docker Compose:**
 
-### DIY
+   ```sh
+   docker compose up postgres
+   ```
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+4. **Create a Prisma schema inside `schema.prisma`.**
 
-Make sure to deploy the output of `npm run build`
+5. **Run the Prisma migration:**
 
-- `build/server`
-- `build/client`
+   ```sh
+   npx prisma migrate dev --name init
+   ```
 
-## Styling
+6. **Set up the project:**
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+   ```sh
+   npm run setup
+   ```
+
+7. **Start the development server:**
+
+   ```sh
+   npm run dev
+   ```
+
+8. **To run the project in production, simply use Docker Compose:**
+
+   ```sh
+   docker compose up
+   ```
